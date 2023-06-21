@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { BoomExceptionFilter } from '../src/helper/error-handling';
+import { BoomExceptionFilter } from './helper/error-handling';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
