@@ -1,14 +1,15 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { UserDTO } from './dto/user.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  async registerUser(@Body() userData: any) {
+  async registerUser(@Body() body: UserDTO) {
     try {
-      const userRecord = await this.authService.registerUser(userData);
+      const userRecord = await this.authService.signUp(body);
 
       return userRecord;
     } catch (error) {
@@ -16,16 +17,16 @@ export class AuthController {
     }
   }
 
-  //   @Post('login')
-  //   async loginUser(@Body() userData: any) {
-  //     try {
-  //       // Log in the user using Firebase Admin SDK
-  //       const uid = await this.authService.loginUser(userData);
+  @Post('login')
+  async loginUser(@Body() body: UserDTO) {
+    try {
+      // Log in the user using Firebase Admin SDK
+      const uid = await this.authService.login(body);
 
-  //       // Return the user's UID upon successful login
-  //       return uid;
-  //     } catch (error) {
-  //       throw new Error(`User login failed: ${error.message}`);
-  //     }
-  //   }
+      // Return the user's UID upon successful login
+      return uid;
+    } catch (error) {
+      throw new Error(`User login failed: ${error.message}`);
+    }
+  }
 }
