@@ -41,6 +41,31 @@ export class AuthService {
     return { user, token };
   }
 
+  async login(body: UserDTO) {
+    // Validate email, user existence, and password
+    const user = await this.getUserByEmail(body.email);
+    if (!user) {
+      throw new BadRequestException(
+        `User with email ${body.email} does not exist`,
+      );
+    }
+
+    const isPasswordValid = await comparePassword(body.password, user.password);
+
+    if (!isPasswordValid) {
+      throw new BadRequestException(
+        `Email or password incorrect, please try again`,
+      );
+    }
+
+    // Generate and return an authentication token
+    const token = this.generateAuthToken(user);
+
+    const retUser = user.toObject();
+    delete retUser.password;
+    return { user: retUser, token };
+  }
+
   async getUserByEmail(email: string) {
     return await this.User.findOne({ email });
   }
