@@ -13,7 +13,7 @@ export class CompanyService {
   ) {}
 
   async createCompany(body: CompanyDTO, userId: string) {
-    const user = await this.User.findOne({ user: userId });
+    const user = await this.User.findOne({ _id: userId });
     if (!user) throw new BadRequestException('User not found');
 
     const percentage = (body.numberOfUser / body.numberOfProduct) * 100;

@@ -8,13 +8,13 @@ export class Company {
   companyName: string;
 
   @Prop()
-  numberOfUser: string;
+  numberOfUser: number;
 
   @Prop()
-  numberOfProduct: string;
+  numberOfProduct: number;
 
   @Prop()
-  percentage: string;
+  percentage: number;
 
   @Prop()
   image: string;
