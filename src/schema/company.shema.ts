@@ -16,8 +16,11 @@ export class Company {
   @Prop()
   percentage: string;
 
+  @Prop()
+  image: string;
+
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-  brand: User;
+  user: User;
 }
 
 export type ComoanyDocument = HydratedDocument<Company>;
