@@ -14,6 +14,13 @@ export class AuthService {
     @InjectModel(User.name) private User: Model<User>,
   ) {}
 
+  /**
+   * Signs up a new user with the provided user data.
+   *
+   * @param body - The user data for registration, including email and password.
+   * @returns An object containing the registered user and an authentication token.
+   * @throws BadRequestException if the user with the given email already exists.
+   */
   async signUp(body: UserDTO) {
     const exUser = await this.getUserByEmail(body.email);
     if (exUser)
@@ -41,6 +48,13 @@ export class AuthService {
     return { user, token };
   }
 
+  /**
+   * Logs in a user with the provided email and password.
+   *
+   * @param body - The user data for login, including email and password.
+   * @returns An object containing the authenticated user and an authentication token.
+   * @throws BadRequestException if the user does not exist or the provided credentials are incorrect.
+   */
   async login(body: UserDTO) {
     // Validate email, user existence, and password
     const user = await this.getUserByEmail(body.email);
