@@ -31,5 +31,25 @@ export class CompanyService {
     return company;
   }
 
-  //   async getCompany(userId: string) {}
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+  async getCompany(userId: string, page: number = 1, limit: number = 20) {
+    const user = await this.User.findOne({ _id: userId });
+    if (!user) throw new BadRequestException('User not found');
+
+    const query = {};
+
+    const reports = await this.Company.find(query)
+      .skip((Number(page) - 1) * Number(limit))
+      .limit(Number(limit))
+      .populate('user');
+
+    const total = await this.Company.countDocuments(query);
+
+    return {
+      reports,
+      page,
+      count: reports.length,
+      total,
+    };
+  }
 }
