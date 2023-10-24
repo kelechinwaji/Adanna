@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Company, CompanySchema } from 'src/schema/company.shema';
 import { User, UserSchema } from 'src/schema/user.scheman';
+import { ImageUploadService } from 'src/service/cloudinary';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import { User, UserSchema } from 'src/schema/user.scheman';
     ]),
   ],
   controllers: [CompanyController],
-  providers: [CompanyService, ConfigService],
+  providers: [CompanyService, ConfigService, ImageUploadService],
 })
 export class CompanyModule {}

@@ -23,7 +23,7 @@ export class CompanyService {
       numberOfUser: body.numberOfUser,
       numberOfProduct: body.numberOfProduct,
       percentage: percentage,
-      User: userId,
+      user: user,
     });
 
     await company.save();
@@ -51,5 +51,22 @@ export class CompanyService {
       count: reports.length,
       total,
     };
+  }
+
+  async uploadImage(userId: string, image: string) {
+    const user = await this.User.findOne({ _id: userId });
+    if (!user) throw new BadRequestException('User not found');
+    console.log(user, image, 'ise');
+    const company = await this.Company.findOneAndUpdate(
+      { user: userId },
+      { image: image },
+      { new: true },
+    );
+
+    if (!company) {
+      throw new BadRequestException('Company not found for the user');
+    }
+
+    return company;
   }
 }
