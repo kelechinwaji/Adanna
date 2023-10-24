@@ -12,6 +12,14 @@ export class CompanyService {
     @InjectModel(User.name) private User: Model<User>,
   ) {}
 
+  /**
+   * Service for creating a new company associated with a user.
+   *
+   * @param body - The company data to create, including company name, number of users, and number of products.
+   * @param userId - The ID of the user who owns the company.
+   * @returns The newly created company.
+   * @throws BadRequestException if the user does not exist or if the data is invalid.
+   */
   async createCompany(body: CompanyDTO, userId: string) {
     const user = await this.User.findOne({ _id: userId });
     if (!user) throw new BadRequestException('User not found');
@@ -31,6 +39,15 @@ export class CompanyService {
     return company;
   }
 
+  /**
+   * Service for retrieving a list of companies associated with a user, with optional pagination.
+   *
+   * @param userId - The ID of the user.
+   * @param page - The page number for pagination (default: 1).
+   * @param limit - The maximum number of companies per page (default: 20).
+   * @returns An object containing the list of companies, page information, count, and total count.
+   * @throws BadRequestException if the user does not exist.
+   */
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   async getCompany(userId: string, page: number = 1, limit: number = 20) {
     const user = await this.User.findOne({ _id: userId });
@@ -53,6 +70,14 @@ export class CompanyService {
     };
   }
 
+  /**
+   * Service for uploading an image for a company associated with a user.
+   *
+   * @param userId - The ID of the user who owns the company.
+   * @param image - The URL or path to the uploaded image.
+   * @returns The company with the updated image URL.
+   * @throws BadRequestException if the user or company does not exist.
+   */
   async uploadImage(userId: string, image: string) {
     const user = await this.User.findOne({ _id: userId });
     if (!user) throw new BadRequestException('User not found');
