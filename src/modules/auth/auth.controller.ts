@@ -20,11 +20,9 @@ export class AuthController {
   @Post('login')
   async loginUser(@Body() body: UserDTO) {
     try {
-      // Log in the user using Firebase Admin SDK
-      const uid = await this.authService.login(body);
+      const data = await this.authService.login(body);
 
-      // Return the user's UID upon successful login
-      return uid;
+      return { message: 'Login successfull', data: data };
     } catch (error) {
       throw new Error(`User login failed: ${error.message}`);
     }
