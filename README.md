@@ -24,14 +24,6 @@ Endpoint: `/api/auth/signup`
 
 Method: `POST`
 
-Request Body:
-```json
-{
-  "username": "johndoe@gmail.com",
-  "password": "123456",
-}
-```json
-
 ### 2. Login
 
 ![Login](https://i.postimg.cc/5NcD7Hdc/Untitled-1.png)
