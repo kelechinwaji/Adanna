@@ -1,3 +1,81 @@
+# Adanne: Authorization-Centric Application
+
+Adanne is a TypeScript-based application developed using NestJS, MongoDB for data storage, and JSON Web Tokens (JWT) for authentication. The app focuses on managing user authorization by distinguishing between two user types: "typeOne" and "typeTwo." Users of typeOne are authorized to create a company by providing the necessary input data, while typeTwo users possess admin access, enabling them to upload an image to the company.
+
+## API Functionality
+
+Adanne features a RESTful API design based on Express, facilitating interactions with the MongoDB Database for data storage and retrieval. Authentication is implemented using JSON Web Tokens to ensure data privacy during the retrieval and storage processes.
+
+## Technology/Tools Used
+
+- **NestJS:** A progressive Node.js framework for building efficient, scalable server-side applications.
+- **Mongo Database:** A NoSQL database for storing and managing data in a flexible, scalable manner.
+- **JSON Web Token (JWT):** A compact, URL-safe means of representing claims to be transferred between two parties.
+
+## Endpoints/Usage
+
+### 1. Create Account/Sign-up
+
+![Create Account](https://i.postimg.cc/kgQKdppM/Untitled.png)
+
+Description: Allows users to create an account by providing necessary details.
+
+Endpoint: `/api/auth/signup`
+
+Method: `POST`
+
+Request Body:
+```json
+{
+  "username": "johndoe@gmail.com",
+  "password": "123456",
+}
+
+### 2. Login
+
+![Login](https://i.postimg.cc/5NcD7Hdc/Untitled-1.png)
+
+Description: Enables users to log in and obtain authentication tokens.
+
+Endpoint: /api/auth/login
+
+Method: POST
+
+Request Body:
+```json
+{
+  "username": "johndoe@gmail.com",
+  "password": "123456",
+}
+
+### 3. Create a company
+
+![company](https://i.postimg.cc/zGNtsK5h/Untitled-2.png)
+
+Description: Allows typeOne users to create a company by providing necessary input data.
+
+Endpoint: /api/company/create
+
+Method: POST
+
+Request Body:
+```json
+{
+  "name": "Example Company",
+  "numberOfUser": "10",
+  "description": "A brief description of the company"
+}
+
+### What I learnt on this project
+
+- Understanding and implementing user authorization, especially with distinct user types, was a crucial aspect of the project. Learning how to control and restrict access based on user roles (typeOne and typeTwo) has enhanced my understanding of security in web applications.
+
+- Implementing pagination for retrieving a list of companies improved the efficiency of data retrieval. Understanding how to paginate data contributes to optimizing the performance of applications dealing with large datasets.
+
+- Structuring this project using a modular approach with NestJS and creating this README file improved my skills in project organization and documentation
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
