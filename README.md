@@ -34,31 +34,6 @@ Endpoint: `/api/auth/login`
 
 Method: `POST`
 
-Request Body:
-```json
-{
-  "username": "johndoe@gmail.com",
-  "password": "123456"
-}
-
-
-### 2. Login
-
-![Login](https://i.postimg.cc/5NcD7Hdc/Untitled-1.png)
-
-Description: Enables users to log in and obtain authentication tokens.
-
-Endpoint: /api/auth/login
-
-Method: POST
-
-Request Body:
-```json
-{
-  "username": "johndoe@gmail.com",
-  "password": "123456",
-}
-
 ### 3. Create a company
 
 ![company](https://i.postimg.cc/zGNtsK5h/Untitled-2.png)
@@ -68,14 +43,6 @@ Description: Allows typeOne users to create a company by providing necessary inp
 Endpoint: /api/company/create
 
 Method: POST
-
-Request Body:
-```json
-{
-  "name": "Example Company",
-  "numberOfUser": "10",
-  "description": "A brief description of the company"
-}
 
 ### What I learnt on this project
 
