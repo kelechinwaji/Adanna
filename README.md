@@ -30,6 +30,7 @@ Request Body:
   "username": "johndoe@gmail.com",
   "password": "123456",
 }
+```json
 
 ### 2. Login
 
