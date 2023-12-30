@@ -37,6 +37,24 @@ Request Body:
 
 Description: Enables users to log in and obtain authentication tokens.
 
+Endpoint: `/api/auth/login`
+
+Method: `POST`
+
+Request Body:
+```json
+{
+  "username": "johndoe@gmail.com",
+  "password": "123456"
+}
+
+
+### 2. Login
+
+![Login](https://i.postimg.cc/5NcD7Hdc/Untitled-1.png)
+
+Description: Enables users to log in and obtain authentication tokens.
+
 Endpoint: /api/auth/login
 
 Method: POST
