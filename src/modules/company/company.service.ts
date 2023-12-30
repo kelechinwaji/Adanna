@@ -21,7 +21,7 @@ export class CompanyService {
    * @throws BadRequestException if the user does not exist or if the data is invalid.
    */
   async createCompany(body: CompanyDTO, userId: string) {
-    const user = await this.User.findOne({ _id: userId });
+    const user = await this.User.findOne({ _id: userId }).select('-password');
     if (!user) throw new BadRequestException('User not found');
 
     const percentage = (body.numberOfUser / body.numberOfProduct) * 100;
